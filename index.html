@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Nusantara - 50 Menu Andalan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #1a1a1a;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(93, 64, 55, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            color: #f5f5dc;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #f5f5dc;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: #d4c4b0;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=1920') center/cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .main-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(4rem, 10vw, 8rem);
+            font-weight: 700;
+            color: #f5f5dc;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.6);
+            text-align: center;
+            animation: fadeInUp 1s ease;
+        }
+
+        .subtitle {
+            color: #d4c4b0;
+            font-size: 1.3rem;
+            margin-top: 20px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .cta-button {
+            margin-top: 40px;
+            padding: 18px 50px;
+            background: #f5f5dc;
+            color: #5d4037;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.6s both;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Contact Sidebar */
+        .contact-sidebar {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(245, 245, 220, 0.95);
+            padding: 25px 30px;
+            border-radius: 0 15px 15px 0;
+            backdrop-filter: blur(10px);
+            animation: slideInLeft 1s ease 0.9s both;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: #3e2723;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        /* Menu Section */
+        .menu-section {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1920') center/cover fixed;
+            padding: 100px 20px;
+            min-height: 100vh;
+        }
+
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3.5rem;
+            color: #f5f5dc;
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #d4c4b0;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 30px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .menu-card {
+            display: flex;
+            gap: 20px;
+            background: rgba(245, 245, 220, 0.95);
+            padding: 25px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            border-color: #5d4037;
+        }
+
+        .menu-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 15px;
+            object-fit: cover;
+            border: 4px solid #5d4037;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-card:hover .menu-image {
+            transform: scale(1.05);
+        }
+
+        .menu-content {
+            flex: 1;
+        }
+
+        .menu-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
+            color: #3e2723;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .menu-origin {
+            font-size: 11px;
+            color: #8b4513;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .stars {
+            color: #ffa500;
+            font-size: 16px;
+            letter-spacing: 2px;
+        }
+
+        .rating-number {
+            color: #5d4037;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .review-box {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 12px 15px;
+            border-radius: 12px;
+            border-left: 4px solid #5d4037;
+        }
+
+        .review-text {
+            font-size: 13px;
+            color: #4a4a4a;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .reviewer {
+            font-size: 12px;
+            color: #5d4037;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        /* Filter Buttons */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            background: transparent;
+            border: 2px solid #d4c4b0;
+            color: #d4c4b0;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #f5f5dc;
+            color: #5d4037;
+            border-color: #f5f5dc;
+        }
+
+        /* Footer */
+        .footer {
+            background: #3e2723;
+            padding: 50px 20px;
+            text-align: center;
+            color: #d4c4b0;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            color: #f5f5dc;
+            margin-bottom: 20px;
+        }
+
+        .footer-text {
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-links a {
+            color: #d4c4b0;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #f5f5dc;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateY(-50%) translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(-50%) translateX(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .contact-sidebar {
+                position: static;
+                transform: none;
+                margin: 30px auto;
+                border-radius: 15px;
+                width: 90%;
+                max-width: 350px;
+                animation: fadeInUp 1s ease 0.9s both;
+            }
+
+            .hero-section {
+                padding-top: 100px;
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .menu-image {
+                width: 120px;
+                height: 120px;
+                margin: 0 auto;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">Coffee Nusantara</div>
+        <div class="nav-links">
+            <a onclick="scrollToSection('home')">Beranda</a>
+            <a onclick="scrollToSection('menu')">Menu</a>
+            <a onclick="scrollToSection('tentang')">Tentang</a>
+            <a onclick="scrollToSection('kontak')">Kontak</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="contact-sidebar">
+            <div class="contact-item">
+                <span class="contact-icon">✉</span>
+                <span>info@coffeenusantara.id</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">📱</span>
+                <span>+62 812-3456-7890</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">𝕏</span>
+                <span>@CoffeeNusantara</span>
+            </div>
+        </div>
+
+        <h1 class="main-title">Coffee Nusantara</h1>
+        <p class="subtitle">50 Varian Kopi Terbaik dari Seluruh Penjuru Nusantara</p>
+        <a onclick="scrollToSection('menu')" class="cta-button">Jelajahi Menu</a>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section" id="menu">
+        <h2 class="section-title">Menu Andalan & Ratings</h2>
+        <p class="section-subtitle">Kumpulan 50 kopi terbaik Indonesia dengan cita rasa autentik</p>
+        
+        <div class="filter-container">
+            <button class="filter-btn active" onclick="filterMenu('all')">Semua</button>
+            <button class="filter-btn" onclick="filterMenu('arabica')">Arabica</button>
+            <button class="filter-btn" onclick="filterMenu('robusta')">Robusta</button>
+            <button class="filter-btn" onclick="filterMenu('specialty')">Specialty</button>
+            <button class="filter-btn" onclick="filterMenu('espresso')">Espresso Based</button>
+        </div>
+
+        <div class="menu-grid" id="menuGrid">
+            <!-- Menu items will be generated by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="kontak">
+        <div class="footer-content">
+            <div class="footer-logo">Coffee Nusantara</div>
+            <p class="footer-text">
+                Menghadirkan 50 varian kopi terbaik dari Aceh hingga Papua. 
+                Setiap cangkir adalah perjalanan rasa melintasi kekayaan Nusantara.
+            </p>
+            <div class="footer-links">
+                <a href="#">Tentang Kami</a>
+                <a href="#">Menu Lengkap</a>
+                <a href="#">Lokasi</a>
+                <a href="#">Kerjasama</a>
+            </div>
+            <p style="font-size: 12px; opacity: 0.7;">
+                &copy; 2026 Coffee Nusantara. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Data 50 Menu Kopi
+        const menuData = [
+            // Sumatra Region (1-12)
+            {
+                id: 1,
+                name: "Arabica Gayo",
+                origin: "Aceh",
+                type: "arabica",
+                rating: 4.5,
+                image: "https://images.unsplash.com/photo-1572442388796-11668f67f46e?w=400",
+                review: "Kopi Gayo yang autentik, rasa body yang kuat dan aroma yang khas. Wajib coba!",
+                reviewer: "Budi, Jakarta"
+            },
+            {
+                id: 2,
+                name: "Kopi Lintong",
+                origin: "Sumatera Utara",
+                type: "arabica",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400",
+                review: "Cita rasa earthy dengan sentuhan herbal yang menyegarkan. Sangat recommended!",
+                reviewer: "Dewi, Medan"
+            },
+            {
+                id: 3,
+                name: "Kopi Mandheling",
+                origin: "Sumatera Utara",
+                type: "arabica",
+                rating: 4.7,
+                image: "https://images.unsplash.com/photo-1497515114889-1c6a5ebf1f6c?w=400",
+                review: "Body penuh dengan aftertaste cokelat yang panjang. Kopi sejati pecinta strong coffee.",
+                reviewer: "Ahmad, Bandung"
+            },
+            {
+                id: 4,
+                name: "Kopi Sidikalang",
+                origin: "Sumatera Utara",
+                type: "arabica",
+                rating: 4.4,
+                image: "https://images.unsplash.com/photo-1504630083234-14187a9df0f5?w=400",
+                review: "Acidity seimbang dengan notes fruity yang menyenangkan. Cocok untuk sore hari.",
+                reviewer: "Rina, Surabaya"
+            },
+            {
+                id: 5,
+                name: "Kopi Kerinci",
+                origin: "Jambi",
+                type: "specialty",
+                rating: 4.8,
+                image: "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=400",
+                review: "Surprisingly smooth dengan floral notes yang elegan. Hidden gem dari Jambi!",
+                reviewer: "Faisal, Palembang"
+            },
+            {
+                id: 6,
+                name: "Kopi Bengkulu",
+                origin: "Bengkulu",
+                type: "arabica",
+                rating: 4.3,
+                image: "https://images.unsplash.com/photo-1498804103079-a6351b050096?w=400",
+                review: "Rasa nutty yang hangat dengan sentuhan rempah khas. Perfect untuk pagi hari.",
+                reviewer: "Maya, Bengkulu"
+            },
+            {
+                id: 7,
+                name: "Kopi Lampung",
+                origin: "Lampung",
+                type: "robusta",
+                rating: 4.2,
+                image: "https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=400",
+                review: "Robusta berkualitas tinggi, crema tebal dan rasa yang bold. Mantap!",
+                reviewer: "Hendra, Lampung"
+            },
+            {
+                id: 8,
+                name: "Kopi Solok",
+                origin: "Sumatera Barat",
+                type: "arabica",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400",
+                review: "Acidity bright dengan notes citrus yang menyegarkan. Kopi Minang yang luar biasa!",
+                reviewer: "Nina, Padang"
+            },
+            {
+                id: 9,
+                name: "Kopi Simalungun",
+                origin: "Sumatera Utara",
+                type: "arabica",
+                rating: 4.5,
+                image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400",
+                review: "Balance sempurna antara sweetness dan acidity. Sangat versatile!",
+                reviewer: "Yoga, Jakarta"
+            },
+            {
+                id: 10,
+                name: "Kopi Toba",
+                origin: "Sumatera Utara",
+                type: "specialty",
+                rating: 4.7,
+                image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400",
+                review: "Unique flavor profile dengan sentuhan kayu manis. Experience yang berbeda!",
+                reviewer: "Lina, Medan"
+            },
+            {
+                id: 11,
+                name: "Kopi Rejang",
+                origin: "Bengkulu",
+                type: "arabica",
+                rating: 4.4,
+                image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400",
+                review: "Body medium dengan aftertaste yang clean. Sangat enjoyable!",
+                reviewer: "Rudi, Jakarta"
+            },
+            {
+                id: 12,
+                name: "Kopi Pagaralam",
+                origin: "Sumatera Selatan",
+                type: "arabica",
+                rating: 4.5,
+                image: "https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=400",
+                review: "Rasa cokelat yang kuat dengan hint karamel. Favorit keluarga kami!",
+                reviewer: "Sari, Palembang"
+            },
+
+            // Java Region (13-24)
+            {
+                id: 13,
+                name: "Kopi Ijen",
+                origin: "Jawa Timur",
+                type: "arabica",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1572442388796-11668f67f46e?w=400",
+                review: "Famous worldwide untuk alasan yang jelas. Smooth dan well-balanced!",
+                reviewer: "Adi, Surabaya"
+            },
+            {
+                id: 14,
+                name: "Kopi Temanggung",
+                origin: "Jawa Tengah",
+                type: "arabica",
+                rating: 4.7,
+                image: "https://images.unsplash.com/photo-1497515114889-1c6a5ebf1f6c?w=400",
+                review: "High altitude coffee dengan complexity yang luar biasa. Must try!",
+                reviewer: "Wawan, Semarang"
+            },
+            {
+                id: 15,
+                name: "Kopi Kintamani",
+                origin: "Bali",
+                type: "arabica",
+                rating: 4.8,
+                image: "https://images.unsplash.com/photo-1504630083234-14187a9df0f5?w=400",
+                review: "Citrusy dan fresh dengan view Gunung Agung. Pengalaman coffee terbaik!",
+                reviewer: "Putu, Denpasar"
+            },
+            {
+                id: 16,
+                name: "Kopi Malabar",
+                origin: "Jawa Barat",
+                type: "arabica",
+                rating: 4.5,
+                image: "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=400",
+                review: "Historical coffee plantation dengan kualitas yang konsisten. Heritage taste!",
+                reviewer: "Dadang, Bandung"
+            },
+            {
+                id: 17,
+                name: "Kopi Garut",
+                origin: "Jawa Barat",
+                type: "arabica",
+                rating: 4.4,
+                image: "https://images.unsplash.com/photo-1498804103079-a6351b050096?w=400",
+                review: "Sweetness alami dengan body yang nyaman di lidah. Local pride!",
+                reviewer: "Asep, Garut"
+            },
+            {
+                id: 18,
+                name: "Kopi Pangalengan",
+                origin: "Jawa Barat",
+                type: "specialty",
+                rating: 4.7,
+                image: "https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=400",
+                review: "Micro lot yang exceptional. Setiap batch adalah masterpiece!",
+                reviewer: "Tina, Bandung"
+            },
+            {
+                id: 19,
+                name: "Kopi Bondowoso",
+                origin: "Jawa Timur",
+                type: "arabica",
+                rating: 4.3,
+                image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400",
+                review: "Emerging region dengan potensi besar. Rasa yang menjanjikan!",
+                reviewer: "Bambang, Jember"
+            },
+            {
+                id: 20,
+                name: "Kopi Raung",
+                origin: "Jawa Timur",
+                type: "arabica",
+                rating: 4.5,
+                image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400",
+                review: "Dari kaki Gunung Raung, kopi dengan karakter yang kuat dan berani!",
+                reviewer: "Citra, Banyuwangi"
+            },
+            {
+                id: 21,
+                name: "Kopi Preanger",
+                origin: "Jawa Barat",
+                type: "arabica",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400",
+                review: "Nama besar dari masa kolonial, kualitas tetap terjaga hingga kini!",
+                reviewer: "Euis, Bandung"
+            },
+            {
+                id: 22,
+                name: "Kopi Banaran",
+                origin: "Jawa Tengah",
+                type: "robusta",
+                rating: 4.2,
+                image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400",
+                review: "Robusta premium dengan proses yang meticulous. Tidak pahit berlebihan!",
+                reviewer: "Joko, Semarang"
+            },
+            {
+                id: 23,
+                name: "Kopi Banyuwangi",
+                origin: "Jawa Timur",
+                type: "arabica",
+                rating: 4.4,
+                image: "https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=400",
+                review: "The hidden paradise of Java coffee. Notes tropical yang unik!",
+                reviewer: "Rini, Banyuwangi"
+            },
+            {
+                id: 24,
+                name: "Kopi Ciwidey",
+                origin: "Jawa Barat",
+                type: "specialty",
+                rating: 4.7,
+                image: "https://images.unsplash.com/photo-1572442388796-11668f67f46e?w=400",
+                review: "Highland coffee dengan suhu dingin, menghasilkan beans yang dense dan flavorful!",
+                reviewer: "Dedi, Bandung"
+            },
+
+            // Sulawesi Region (25-32)
+            {
+                id: 25,
+                name: "Toraja Sesean",
+                origin: "Sulawesi Selatan",
+                type: "specialty",
+                rating: 5.0,
+                image: "https://images.unsplash.com/photo-1497515114889-1c6a5ebf1f6c?w=400",
+                review: "Asam yang seimbang, manis buah yang terasa jelas. Favorit saya!",
+                reviewer: "Siti, Bandung"
+            },
+            {
+                id: 26,
+                name: "Kopi Kalosi",
+                origin: "Sulawesi Selatan",
+                type: "arabica",
+                rating: 4.7,
+                image: "https://images.unsplash.com/photo-1504630083234-14187a9df0f5?w=400",
+                review: "Famous Toraja coffee dengan reputation global. Truly world class!",
+                reviewer: "Andi, Makassar"
+            },
+            {
+                id: 27,
+                name: "Kopi Sapan",
+                origin: "Sulawesi Barat",
+                type: "arabica",
+                rating: 4.5,
+                image: "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=400",
+                review: "Dari pegunungan Mandailing, kopi dengan soul yang dalam!",
+                reviewer: "Nur, Mamuju"
+            },
+            {
+                id: 28,
+                name: "Kopi Mamasa",
+                origin: "Sulawesi Barat",
+                type: "arabica",
+                rating: 4.4,
+                image: "https://images.unsplash.com/photo-1498804103079-a6351b050096?w=400",
+                review: "Remote region producing exceptional beans. Worth the journey!",
+                reviewer: "Yusuf, Mamasa"
+            },
+            {
+                id: 29,
+                name: "Kopi Enrekang",
+                origin: "Sulawesi Selatan",
+                type: "arabica",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=400",
+                review: "High altitude beans dengan complexity yang mengagumkan!",
+                reviewer: "Maya, Makassar"
+            },
+            {
+                id: 30,
+                name: "Kopi Luwuk",
+                origin: "Sulawesi Tengah",
+                type: "robusta",
+                rating: 4.1,
+                image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400",
+                review: "Robusta dengan karakter yang berani. Perfect untuk espresso!",
+                reviewer: "Budi, Palu"
+            },
+            {
+                id: 31,
+                name: "Kopi Banggai",
+                origin: "Sulawesi Tengah",
+                type: "arabica",
+                rating: 4.3,
+                image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400",
+                review: "Island coffee dengan sentuhan marine breeze yang unik!",
+                reviewer: "Lukman, Luwuk"
+            },
+            {
+                id: 32,
+                name: "Kopi Kolaka",
+                origin: "Sulawesi Tenggara",
+                type: "arabica",
+                rating: 4.4,
+                image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400",
+                review: "Emerging producer dengan kualitas yang surprising. Keep an eye on them!",
+                reviewer: "Rahma, Kendari"
+            },
+
+            // Nusa Tenggara & Papua (33-40)
+            {
+                id: 33,
+                name: "Kopi Bajawa",
+                origin: "Nusa Tenggara Timur",
+                type: "arabica",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400",
+                review: "Dari tanah vulkanik Flores, kopi dengan mineral notes yang distinct!",
+                reviewer: "Martha, Ende"
+            },
+            {
+                id: 34,
+                name: "Kopi Manggarai",
+                origin: "Nusa Tenggara Timur",
+                type: "arabica",
+                rating: 4.5,
+                image: "https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=400",
+                review: "Flores coffee at its finest. Chocolatey dan smooth!",
+                reviewer: "Paulus, Ruteng"
+            },
+            {
+                id: 35,
+                name: "Kopi Sumba",
+                origin: "Nusa Tenggara Timur",
+                type: "arabica",
+                rating: 4.4,
+                image: "https://images.unsplash.com/photo-1572442388796-11668f67f46e?w=400",
+                review: "From the island of horses, wild and free flavor profile!",
+                reviewer: "Umbu, Waingapu"
+            },
+            {
+                id: 36,
+                name: "Kopi Lembata",
+                origin: "Nusa Tenggara Timur",
+                type: "arabica",
+                rating: 4.3,
+                image: "https://images.unsplash.com/photo-1497515114889-1c6a5ebf1f6c?w=400",
+                review: "Volcanic island coffee dengan smoky undertones yang menarik!",
+                reviewer: "Maria, Lewoleba"
+            },
+            {
+                id: 37,
+                name: "Kopi Wamena",
+                origin: "Papua",
+                type: "specialty",
+                rating: 4.9,
+                image: "https://images.unsplash.com/photo-1504630083234-14187a9df0f5?w=400",
+                review: "The legendary Papua coffee. Exotic, rare, and absolutely stunning!",
+                reviewer: "Yonas, Jayapura"
+            },
+            {
+                id: 38,
+                name: "Kopi Pegunungan Bintang",
+                origin: "Papua",
+                type: "arabica",
+                rating: 4.7,
+                image: "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=400",
+                review: "From the star mountains, truly a star in the coffee world!",
+                reviewer: "Amos, Oksibil"
+            },
+            {
+                id: 39,
+                name: "Kopi Lanny Jaya",
+                origin: "Papua",
+                type: "arabica",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1498804103079-a6351b050096?w=400",
+                review: "Highland mystery dengan flavor yang complex dan memikat!",
+                reviewer: "Titus, Tiom"
+            },
+            {
+                id: 40,
+                name: "Kopi Yahukimo",
+                origin: "Papua",
+                type: "arabica",
+                rating: 4.5,
+                image: "https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=400",
+                review: "Remote paradise producing beans dengan karakter yang kuat!",
+                reviewer: "Yakobus, Dekai"
+            },
+
+            // Espresso Based & Specialty (41-50)
+            {
+                id: 41,
+                name: "Kopi Susu Nusantara",
+                origin: "House Blend",
+                type: "espresso",
+                rating: 4.8,
+                image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400",
+                review: "Kopi susu kekinian yang pas, tidak terlalu manis. Segar!",
+                reviewer: "Adi, Bali"
+            },
+            {
+                id: 42,
+                name: "Espresso Gayo",
+                origin: "Aceh",
+                type: "espresso",
+                rating: 4.7,
+                image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400",
+                review: "Single origin espresso dengan crema yang tebal dan persistent!",
+                reviewer: "Raka, Jakarta"
+            },
+            {
+                id: 43,
+                name: "Cappuccino Toraja",
+                origin: "Sulawesi Selatan",
+                type: "espresso",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400",
+                review: "Perfect balance antara espresso Toraja dan steamed milk yang silky!",
+                reviewer: "Dina, Makassar"
+            },
+            {
+                id: 44,
+                name: "Flat White Kintamani",
+                origin: "Bali",
+                type: "espresso",
+                rating: 4.7,
+                image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400",
+                review: "Microfoam yang sempurna dengan citrusy espresso. Australian style!",
+                reviewer: "Made, Denpasar"
+            },
+            {
+                id: 45,
+                name: "Americano Ijen",
+                origin: "Jawa Timur",
+                type: "espresso",
+                rating: 4.5,
+                image: "https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=400",
+                review: "Clean dan refreshing, perfect untuk menemani hari kerja!",
+                reviewer: "Bayu, Surabaya"
+            },
+            {
+                id: 46,
+                name: "Mocha Mandheling",
+                origin: "Sumatera Utara",
+                type: "espresso",
+                rating: 4.8,
+                image: "https://images.unsplash.com/photo-1572442388796-11668f67f46e?w=400",
+                review: "Kombinasi sempurna cokelat dan kopi strong. Dessert dalam cangkir!",
+                reviewer: "Sinta, Medan"
+            },
+            {
+                id: 47,
+                name: "Cold Brew Special",
+                origin: "Multi Origin",
+                type: "specialty",
+                rating: 4.9,
+                image: "https://images.unsplash.com/photo-1497515114889-1c6a5ebf1f6c?w=400",
+                review: "12-hour steeping process menghasilkan coffee yang smooth dan low acidity!",
+                reviewer: "Kevin, Jakarta"
+            },
+            {
+                id: 48,
+                name: "V60 Pour Over",
+                origin: "Single Origin",
+                type: "specialty",
+                rating: 4.7,
+                image: "https://images.unsplash.com/photo-1504630083234-14187a9df0f5?w=400",
+                review: "Manual brew yang menampilkan true character dari setiap beans!",
+                reviewer: "Lisa, Bandung"
+            },
+            {
+                id: 49,
+                name: "Aeropress Blend",
+                origin: "House Selection",
+                type: "specialty",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=400",
+                review: "Innovative brewing method dengan hasil yang rich dan full-bodied!",
+                reviewer: "Tommy, Surabaya"
+            },
+            {
+                id: 50,
+                name: "Nusantara Signature",
+                origin: "Premium Blend",
+                type: "specialty",
+                rating: 5.0,
+                image: "https://images.unsplash.com/photo-1498804103079-a6351b050096?w=400",
+                review: "The ultimate blend dari 5 wilayah Indonesia. Masterpiece kami!",
+                reviewer: "Founder, Coffee Nusantara"
+            }
+        ];
+
+        // Render Menu
+        function renderMenu(filter = 'all') {
+            const menuGrid = document.getElementById('menuGrid');
+            menuGrid.innerHTML = '';
+
+            const filteredData = filter === 'all' 
+                ? menuData 
+                : menuData.filter(item => item.type === filter);
+
+            filteredData.forEach((item, index) => {
+                const stars = '★'.repeat(Math.floor(item.rating)) + (item.rating % 1 !== 0 ? '½' : '');
+                
+                const card = document.createElement('div');
+                card.className = 'menu-card';
+                card.style.animation = `fadeInUp 0.5s ease ${index * 0.05}s both`;
+                
+                card.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="menu-image">
+                    <div class="menu-content">
+                        <div class="menu-origin">${item.origin}</div>
+                        <h3 class="menu-title">${item.name}</h3>
+                        <div class="rating">
+                            <span class="stars">${stars}</span>
+                            <span class="rating-number">${item.rating}</span>
+                        </div>
+                        <div class="review-box">
+                            <p class="review-text">"${item.review}"</p>
+                            <p class="reviewer">- ${item.reviewer}</p>
+                        </div>
+                    </div>
+                `;
+                
+                menuGrid.appendChild(card);
+            });
+        }
+
+        // Filter Function
+        function filterMenu(type) {
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Render filtered menu
+            renderMenu(type);
+        }
+
+        // Scroll Function
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Initial Render
+        renderMenu();
+    </script>
+</body>
+</html>
